@@ -4,7 +4,8 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Helvetica', 'Arial', 'sans-serif'],
+                sans: ['"Playfair Display"'],
+                logo: ['"Dancing Script"']
             },
             colors: {
                 'sooty-yellow': '#ece5cf',
