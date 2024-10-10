@@ -28,9 +28,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         registry-url: 'https://npm.pkg.github.com'
-        #scope: '@Win-ther'
+        scope: '@Win-ther'
     - run: npm run build --if-present
     #- run: npm test
+    - run: npm add user
     - run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
