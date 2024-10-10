@@ -1,8 +1,11 @@
 {
   "name": "@Win-ther/vue-project-group-6",
   "version": "0.0.0",
-  "private": false,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Win-ther/VueProjectGroup6.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
