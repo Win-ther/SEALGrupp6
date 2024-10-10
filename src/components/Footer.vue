@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router';
 </script>
 
 <template>
-  <footer class="bg-old-black p-5 text-center desktop:fixed desktop:bottom-0 w-full">
+  <footer class="bg-old-black p-5 text-center desktop:bottom-0 w-full">
     <p class="font-logo text-xl">Careta © Grupp 6</p>
     <br>
     <div class="flex gap-5 justify-center underline text-xs">
