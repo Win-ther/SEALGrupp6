@@ -15,9 +15,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22.x'
-          registry-url: 'https://github.com/Win-ther/VueProjectGroup6/pkgs/npm/vue-project-group-6'
+          registry-url: 'https://npm.pkg.github.com'
           # Defaults to the user or organization that owns the workflow file
-          scope: '@Win-ther'
+          scope: '@win-ther'
 
       - run: npm publish
         env:
