@@ -1,7 +1,7 @@
 {
   "name": "vue-project-group-6",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
   "type": "module",
   "scripts": {
     "dev": "vite",
