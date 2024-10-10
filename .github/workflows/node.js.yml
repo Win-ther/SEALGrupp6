@@ -4,8 +4,8 @@
 name: Node.js CI
 
 on:
-  release:
-    types: created
+  push:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -27,8 +27,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        registry-url: 'https://npm.pkg.github.com'
-        scope: '@Win-ther'
+        #registry-url: 'https://npm.pkg.github.com'
+        #scope: '@Win-ther'
     - run: npm run build --if-present
     #- run: npm test
     - run: npm publish
