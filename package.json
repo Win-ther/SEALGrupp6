@@ -1,6 +1,6 @@
 {
   "name": "@win-ther/vue-project-group-6",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "vitest": "^1.6.0"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/",
+    "access": "public"
   }
 }
