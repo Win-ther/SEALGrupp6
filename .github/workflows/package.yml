@@ -3,8 +3,6 @@ name: Publish package to GitHub Packages
 on:
   release:
     types: [published]
-env: 
-  PERSONAL-TOKEN: "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"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,12 +19,13 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           # Defaults to the user or organization that owns the workflow file
           scope: '@win-ther'
+          always-auth: false
           
       - name: Configure npm for GitHub Packages
         run: |
           echo "@win-ther:registry=https://npm.pkg.github.com/" >> ~/.npmrc           
-          echo "//npm.pkg.github.com/:_authToken=${{ env.PERSONAL-TOKEN }}" >> ~/.npmrc           
-          echo "always-auth=true" >> ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secret.GITHUB_TOKEN }}" >> ~/.npmrc           
+          echo "always-auth=false" >> ~/.npmrc
           
       - name: Verify .npmrc Configurations
         run: |
@@ -45,7 +44,7 @@ jobs:
           fi
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ env.PERSONAL-TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secret.GITHUB_TOKEN }}
       - run: npm config ls -l
         env:
-          NODE_AUTH_TOKEN: ${{ env.PERSONAL-TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secret.GITHUB_TOKEN }}
