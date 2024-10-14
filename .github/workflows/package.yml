@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       packages: write
     steps:
       - uses: actions/checkout@v4
@@ -18,8 +18,28 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           # Defaults to the user or organization that owns the workflow file
           scope: '@win-ther'
-          always-auth: 'true'
-
+          
+      - name: Configure npm for GitHub Packages
+        run: |
+          echo "@win-ther:registry=https://npm.pkg.github.com/" >> ~/.npmrc           
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc           
+          echo "always-auth=true" >> ~/.npmrc
+          
+      - name: Verify .npmrc Configurations
+        run: |
+          if grep -q '@win-ther:registry=https://npm.pkg.github.com/' ~/.npmrc; then             
+            echo "Registry configuration is correct."           
+          else             
+            echo "Error: Registry configuration is missing or incorrect."            
+            exit 1           
+          fi
+          
+          if grep -q '//npm.pkg.github.com/:_authToken' ~/.npmrc; then
+            echo "Authentication token is set."
+          else
+            echo "Error: Authentication token is missing."
+            exit 1
+          fi
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
