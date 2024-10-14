@@ -24,7 +24,7 @@ jobs:
       - name: Configure npm for GitHub Packages
         run: |
           echo "@win-ther:registry=https://npm.pkg.github.com/" >> ~/.npmrc           
-          echo "//npm.pkg.github.com/:_authToken=${{ secret.GITHUB_TOKEN }}" >> ~/.npmrc           
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc           
           echo "always-auth=false" >> ~/.npmrc
           
       - name: Verify .npmrc Configurations
@@ -44,7 +44,7 @@ jobs:
           fi
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secret.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: npm config ls -l
         env:
-          NODE_AUTH_TOKEN: ${{ secret.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
