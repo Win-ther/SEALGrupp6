@@ -18,6 +18,7 @@ export default {
                 'old-black': '#aeae98',
                 'button-green': '#c1c491',
                 'old-peach': '#FFDAB9',
+                'hardwood': '#937A62',
                 //'button-green': '#d0d49f'
                 //'button-green': '#c6c99b'
             },
