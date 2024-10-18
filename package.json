@@ -1,8 +1,11 @@
 {
-  "name": "vue-project-group-6",
-  "version": "0.0.0",
-  "private": true,
+  "name": "@win-ther/vue-project-group-6",
+  "version": "0.0.9",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Win-ther/VueProjectGroup6.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -22,5 +25,9 @@
     "tailwindcss": "^3.4.13",
     "vite": "^5.3.1",
     "vitest": "^1.6.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/",
+    "access": "public"
   }
 }
