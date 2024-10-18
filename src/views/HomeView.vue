@@ -1,23 +1,33 @@
 <script setup>
+import Car from "@/components/Car.vue";
+import {computed, onMounted, reactive} from "vue";
 
+const state = reactive({
+  cars: [],
+});
+
+const mostPopularThree = computed( () => {
+  return state.cars.sort((a, b) => {
+    if (a.popularity < b.popularity) return 1;
+    if (a.popularity > b.popularity) return -1;
+    return 0;
+  }).slice(0,3);
+});
+
+onMounted(async () => {
+  await fetch('http://localhost:8080/api/cars')
+      .then(res => res.json())
+      .then(function (data) {
+        state.cars = data;
+      }).catch(error => console.log('Error fetching data', error));
+});
 </script>
 
 <template>
-  <main class="bg-amber-50 p-6 flex flex-col gap-5 h-auto">
-    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-      laborum."</p>
-    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-      laborum."</p>
-    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-      laborum."</p>
+  <main>
+    <h1 class="flex justify-center mt-4 text-4xl desktop:text-4xl text-center py-5"><span>Our most popular <span class="font-logo font-extrabold">Caretas!</span></span></h1>
+    <section class="p-6 flex flex-col items-center gap-5 desktop:flex-row desktop:justify-evenly desktop:overflow-x-auto">
+      <Car v-for="car in mostPopularThree" :key="car.id" :car="car"/>
+    </section>
   </main>
 </template>
