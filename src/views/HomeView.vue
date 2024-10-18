@@ -24,8 +24,19 @@ onMounted(async () => {
 </script>
 
 <template>
-  <main>
-    <h1 class="flex justify-center mt-4 text-4xl desktop:text-4xl text-center py-5"><span>Our most popular <span class="font-logo font-extrabold">Caretas!</span></span></h1>
+  <section class="flex-col bg-old-black bg-opacity-35 text-center items-center h-[330] desktop:py-10 font-mono italic p-4 text-pretty">
+    <h1 class="mb-4 text-xl desktop:mx-32">Experience the Charm of a Bygone Era with Our Vintage Car Rentals!</h1>
+    <p class="desktop:mx-32">
+      Add timeless elegance to your special moments with our exclusive vintage car collection.
+      Whether it’s a road trip, wedding, photoshoot, or event, our beautifully restored classics will elevate any occasion.
+      Choose from sleek retro rides and iconic models that bring adventure and nostalgia to life.
+      Make your journey as memorable as the destination!
+    </p>
+  </section>
+  <main class="pb-10 flex flex-col flex-grow">
+    <h2 class="flex justify-center mt-4 text-3xl text-center py-5">
+      <span>Our most popular <span class="font-logo font-extrabold">Caretas!</span></span>
+    </h2>
     <section class="p-6 flex flex-col items-center gap-5 desktop:flex-row desktop:justify-evenly desktop:overflow-x-auto">
       <Car v-for="car in mostPopularThree" :key="car.id" :car="car"/>
     </section>
