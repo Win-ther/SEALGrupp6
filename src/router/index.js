@@ -12,7 +12,7 @@ const router = createRouter({
     {
       path: '/rentcareta',
       name: 'rentcareta',
-      component: () => import('../views/RentACareta.vue')
+      component: () => import('../views/RentACaretaView.vue')
     }
   ]
 })
