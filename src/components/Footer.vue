@@ -8,9 +8,9 @@ import { RouterLink } from 'vue-router';
     <br>
     <div class="flex gap-5 justify-center underline text-xs">
       <RouterLink class="text-amber-50" to="/">Home</RouterLink>
-      <RouterLink class="text-amber-50" to="/rentcareta">Rent a Careta</RouterLink>
+      <RouterLink class="text-amber-50" to="/rentcareta">Rent a <span class="font-logo font-extrabold ">Careta</span></RouterLink>
       <RouterLink class="text-amber-50" to="/cancelcareta">Cancel Reservation</RouterLink>
-      <a class="text-amber-50" href="https://www.youtube.com/watch?v=Eo-g3JkikFc">Full Careta</a>
+      <a class="text-amber-50" href="https://www.youtube.com/watch?v=Eo-g3JkikFc">Full <span class="font-logo font-extrabold ">Careta</span></a>
     </div>
     </footer>
 </template>
