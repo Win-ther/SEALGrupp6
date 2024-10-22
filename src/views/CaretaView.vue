@@ -4,34 +4,55 @@ import {onMounted, reactive, ref} from "vue";
 import {useRoute} from "vue-router";
 import VueEasyLightbox from 'vue-easy-lightbox';
 
-const state = reactive({
-  car: Object,
-  reservation: {
-    name: String,
-    phoneNumber: String,
-    email: String,
-    dateFrom: Date,
-    dateTo: Date,
-    carId: Number
-  }
-});
 
 const visible = ref(false);
 const currentIndex = ref(0);
 
 const id = useRoute().params.id;
 
-const validateForm = () =>{
+const validateForm = () => {
+  let dateFrom = state.reservation.dateFrom.split("-");
+  let dateTo = state.reservation.dateTo.split("-");
+  let today = new Date();
+  let dFrom = new Date(`${dateFrom[0]}/${dateFrom[1]}/${dateFrom[2]}`);
+  let dTo = new Date(`${dateTo[0]}/${dateTo[1]}/${dateTo[2]}`);
 
+  if (dateFrom[0] < today.getFullYear() ||
+      (dateFrom[1] <= today.getMonth() && dateFrom[0] <= today.getFullYear()) ||
+      (dateFrom[2] < today.getDate() && dateFrom[1] <= today.getMonth()+1 && dateFrom[0] <= today.getFullYear())) {
+    alert("Date From cannot be set before todays date!");
+    return false;
+  }
+  if (Math.round((dTo.getTime()-dFrom.getTime())/(24 * 60 * 60 * 1000)) > 14 ) {
+    alert("You can only reserve a car for 14 days straight!");
+    return false;
+  }
+  //return true;
 }
 
+const state = reactive({
+  car: {},
+  reservation: {
+    name: '',
+    phoneNumber: '',
+    email: '',
+    dateFrom: '',
+    dateTo: '',
+    carId: id
+  },
+  reservationNumber: ''
+});
+
 const reserveCar = async () => {
-  if(validateForm()){
+  if (validateForm()) {
     await fetch('http://localhost:8080/api/reservations', {
       method: "POST",
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({})
-    })
+      body: JSON.stringify(state.reservation)
+    }).then(res => res.json())
+        .then(function (data) {
+          state.reservationNumber = data
+        }).catch(error => console.log('Error adding reservation', error));
   }
 }
 
@@ -66,15 +87,20 @@ onMounted(async () => {
     <section class="w-full desktop:w-[600px] desktop:mt-5 desktop:m-auto">
       <form class="flex flex-col gap-2 bg-old-black bg-opacity-35 rounded-md p-5 shadow-lg  text-xl">
         <label for="name">Enter your name:</label>
-        <input v-bind=""class="rounded-md shadow-lg py-3 px-1" type="text" name="name" id="name">
+        <input v-model="state.reservation.name" class="rounded-md shadow-lg py-3 px-1" type="text" name="name"
+               id="name">
         <label for="phonenumber">Enter your phonenumber:</label>
-        <input class="rounded-md shadow-lg py-3 px-1" type="text" name="phonenumber" id="phonenumber">
+        <input v-model="state.reservation.phoneNumber" class="rounded-md shadow-lg py-3 px-1" type="text"
+               name="phonenumber" id="phonenumber">
         <label for="email">Enter your email:</label>
-        <input class="rounded-md shadow-lg py-3 px-1" type="text" name="email" id="email">
+        <input v-model="state.reservation.email" class="rounded-md shadow-lg py-3 px-1" type="text" name="email"
+               id="email">
         <label for="datefrom">Date From:</label>
-        <input class="rounded-md shadow-lg py-3 px-1" type="date" name="datefrom" id="name">
+        <input v-model="state.reservation.dateFrom" class="rounded-md shadow-lg py-3 px-1" type="date" name="datefrom"
+               id="dateFrom">
         <label for="dateto">Date To:</label>
-        <input class="rounded-md shadow-lg py-3 px-1" type="date" name="dateto" id="name">
+        <input v-model="state.reservation.dateTo" class="rounded-md shadow-lg py-3 px-1" type="date" name="dateto"
+               id="dateTo">
         <button type="submit"
                 class="bg-hardwood bg-opacity-60 hover:bg-opacity-80 shadow-md rounded-lg py-3 mt-5 desktop:py-2 transform transition-transform active:scale-95 desktop:mt-10"
                 @click.prevent="reserveCar">
