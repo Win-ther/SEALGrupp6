@@ -17,11 +17,13 @@ const router = createRouter({
     {
       path: '/cancelcareta',
       name: 'cancelcareta',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/CancelView.vue')
-    }
+    },
+    {
+      path: '/rentcareta/:model/:id',
+      name: 'careta',
+      component: () => import('../views/CaretaView.vue')
+    },
   ]
 })
 

@@ -1,11 +1,12 @@
 <script setup>
 const props = defineProps({
-  car: Object,
+  car: Object
 })
 </script>
 
 <template>
-  <main class="bg-hardwood bg-opacity-60 flex flex-col items-center min-w-[350px] desktop:min-w-96 shadow-lg rounded-lg pb-5">
+  <RouterLink :to="'/rentcareta/'+props.car.model+'/'+props.car.id">
+  <main class="bg-hardwood bg-opacity-60 flex flex-col items-center min-w-[350px] desktop:min-w-96 shadow-lg rounded-lg pb-5 hover:brightness-110 ">
     <img :src="props.car.image"
          alt="Car Image"
          class="w-80 desktop:w-[340px] h-52 shadow-md rounded-lg mt-5 transition-transform duration-300 hover:scale-105 hover:brightness-110"/>
@@ -21,6 +22,7 @@ const props = defineProps({
       <span class=""><i class="bi bi-fuel-pump-fill"></i> {{ props.car.fuel }}</span>
     </section>
   </main>
+  </RouterLink>
 </template>
 
 <style scoped>
