@@ -6,22 +6,22 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
+      customerEmail: 'home',
       component: HomeView
     },
     {
       path: '/rentcareta',
-      name: 'rentcareta',
+      customerEmail: 'rentcareta',
       component: () => import('../views/RentACaretaView.vue')
     },
     {
       path: '/cancelcareta',
-      name: 'cancelcareta',
+      customerEmail: 'cancelcareta',
       component: () => import('../views/CancelView.vue')
     },
     {
       path: '/rentcareta/:model/:id',
-      name: 'careta',
+      customerEmail: 'careta',
       component: () => import('../views/CaretaView.vue')
     },
   ]
