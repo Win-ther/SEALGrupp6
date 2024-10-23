@@ -10,17 +10,10 @@ export default {
                 logo: ['"Dancing Script"']
             },
             colors: {
-                'sooty-yellow': '#ece5cf',
-                'old-red': '#ffdac6',
-                'old-yellow': '#ffe7c2',
                 'old-green': '#babd8d',
-                'old-blue': '#d8e2dc',
                 'old-black': '#aeae98',
                 'button-green': '#c1c491',
-                'old-peach': '#FFDAB9',
-                'hardwood': '#937A62',
-                //'button-green': '#d0d49f'
-                //'button-green': '#c6c99b'
+                'hardwood': '#937A62'
             },
             textShadow: {
                 sm: '0 1px 2px var(--tw-shadow-color)',
@@ -30,6 +23,8 @@ export default {
         },
         screens: {
             'desktop': '700px',
+            'caretaViewT': '700px',
+            'caretaViewD': '950px',
         },
     },
     variants: {
