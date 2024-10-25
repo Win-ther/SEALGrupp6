@@ -10,6 +10,7 @@
     "test:unit": "vitest"
   },
   "dependencies": {
+    "msw": "^2.5.1",
     "vue": "^3.4.29",
     "vue-easy-lightbox": "^1.19.0",
     "vue-router": "^4.3.3"

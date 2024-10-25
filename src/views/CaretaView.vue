@@ -21,9 +21,9 @@ const validateForm = () => {
     return false;
   }
 
-  //Phonenumber
+  //Phone number
   if (state.reservation.customerPhone === null || state.reservation.customerPhone.trim() === "") {
-    alert("Phonenumber can not be empty.")
+    alert("Phone number can not be empty.")
     return false;
   } else if (!state.reservation.customerPhone.match(/^[0-9]+$/)) {
     alert("Please enter a valid phone number. Only numbers are allowed.")
@@ -32,7 +32,7 @@ const validateForm = () => {
 
   //Email
   if (state.reservation.customerEmail === null || state.reservation.customerEmail.trim() === "") {
-    alert("Email adress can not be empty.");
+    alert("Email address can not be empty.");
     return false;
   } else if (!state.reservation.customerEmail.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
     alert("Please enter a valid email address.");
@@ -115,7 +115,7 @@ onMounted(async () => {
         <label for="name">Enter your full name:</label>
         <input v-model="state.reservation.customerName" class="rounded-md shadow-lg py-3 px-1" type="text" name="name"
                id="name">
-        <label for="phonenumber">Enter your phonenumber:</label>
+        <label for="phonenumber">Enter your phone number:</label>
         <input v-model="state.reservation.customerPhone" class="rounded-md shadow-lg py-3 px-1" type="text"
                name="phonenumber" id="phonenumber">
         <label for="email">Enter your email:</label>
