@@ -1,14 +1,20 @@
 # vue-project-group-6
 
-This template should help get you started developing with Vue 3 in Vite.
+These are the instructions for starting our project using vue 3.
 
-## Recommended IDE Setup
+> [!IMPORTANT]
+>  Backend runs on port: ***8080*** <br>
+>  Mysql runs on on port: ***3306***<br>
+>  Frontend<sup>(dev)</sup> runs on on port: ***3000***
+## Installing Vue 3
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+https://vuejs.org/guide/quick-start.html#creating-a-vue-application
 
-## Customize configuration
+## Backend setup
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+* Clone [VueGroupProjectBackEnd](https://github.com/Win-ther/VueGroupProjectBackEnd).<br>
+* Install [Docker Desktop](https://www.docker.com/products/docker-desktop/). <br>
+* Run cloned VueGroupProjectBackEnd using IDE.
 
 ## Project Setup
 
@@ -16,20 +22,21 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Run application for development
 
 ```sh
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
 ```
 
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
 npm run test:unit
+```
+
+### Run Unit Tests with Vitest, then run application for development
+<sup>(Press q to continue from tests to dev)</sup>
+
+```sh
+npm run startup 
 ```
